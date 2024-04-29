@@ -9,22 +9,37 @@ class RenderLoop extends Component {
   ];
 
   renderProduct = () => {
-    let renderProduct = [];
-    for (let i = 0; i < this.products.length; i++) {
-      let product = this.products[i];
-      let render = (
-        <tr key={i}>
-          <td>{product.id}</td>
-          <td>{product.name}</td>
-          <td>{product.price}</td>
+    // cách 1:
+    // let renderProduct = [];
+    // for (let i = 0; i < this.products.length; i++) {
+    //   let product = this.products[i];
+    //   let render = (
+    //     <tr key={i}>
+    //       <td>{product.id}</td>
+    //       <td>{product.name}</td>
+    //       <td>{product.price}</td>
+    //       <td>
+    //         <img alt="picture" src={product.image} style={{width: "100px"}} />
+    //       </td>
+    //     </tr>
+    //   );
+    //   renderProduct.push(render);
+    // }
+    // return renderProduct;
+    // cách 2:
+
+    return this.products.map((product, index) => {
+      return (
+        <tr key={index}>
+          <td>id: {product.id}</td>
+          <td>name: {product.name}</td>
+          <td>price: {product.price}</td>
           <td>
-            <img alt="picture" src={product.image} style={{width: "100px"}} />
+            img: <img alt="picture" src={product.image} style={{ width: "100px" }} />
           </td>
         </tr>
       );
-      renderProduct.push(render);
-    }
-    return renderProduct;
+    });
   };
 
   render() {
